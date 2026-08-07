@@ -1,0 +1,19 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    
+}
+
+.card__icon{
+    width: 35px;
+    height: 35px;
+}
+.card__weather{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
