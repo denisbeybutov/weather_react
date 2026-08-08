@@ -6,7 +6,11 @@ import { getCityCoordinates, getWeather } from './api/weatherApi'
 import Clock from './components/Clock'
 import { useCities } from './hooks/useCities'
 
+
+
 export default function App() {
+  
+
     const [notification, setNotification] = useState('')
     const [error, setError] = useState('')
     const [city, setCity] = useState('')
@@ -33,8 +37,16 @@ export default function App() {
       ])
  
       // запрос на сервер
-      const place = await getCityCoordinates(city)
-      const weatherData = await  getWeather(place.latitude, place.longitude)
+      try{
+        const place = await getCityCoordinates(city)
+        const weatherData = await  getWeather(place.latitude, place.longitude)
+      }catch(err){
+        setError(err.message);
+        setCities(prev => prev.filter(city => city.id !== id));  
+        setCity('')
+        return
+      }
+      
 
       console.log(weatherData)
       // записываем данные в массив

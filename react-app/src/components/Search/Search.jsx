@@ -22,8 +22,10 @@ export default function Search({city, setCity, addCity, refreshAll, setError}){
                 onChange={changeCity}
                 
             />
-            <button onClick={addCity}>+ Добавить</button>
-            <button onClick={refreshAll}>Обновить все</button>
+            <div className='search__buttons'>
+                <button onClick={addCity}>Добавить</button>
+                <button onClick={refreshAll}>Обновить все</button>
+            </div>
             
         </div>
     )

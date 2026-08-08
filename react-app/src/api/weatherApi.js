@@ -6,10 +6,7 @@ export async function getCityCoordinates(city) {
 
       
       if (!geoData.results || geoData.results.length === 0) {
-        setCities(prev => prev.filter(city => city.id !== id));        
-        setError("Город не найден");
-        setCity('')
-        return;
+        throw new Error("Город не найден");
     }
 
     return geoData.results[0]
