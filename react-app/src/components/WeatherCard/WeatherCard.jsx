@@ -2,6 +2,7 @@ import { weather } from "../Card/Card"
 import { getWeatherIcon } from "../Icons/Icons"
 import './WeatherCard.css'
 
+
 export default function WeatherCard({city}){
     if(!city) {
         return (

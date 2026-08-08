@@ -12,19 +12,25 @@ export default function App2(){
     const {cities, setCities, citiesRef} = useCities()
     const [selectedCity, setSelectedCity] = useState(null)
 
-    const getBackground = (code) => {
+    const getWeatherTheme = (code) => {
         if (code === 0) {
-            return '/bg_clear.jpeg'
+            return {
+                background: '/bg_clear.jpeg',
+                cards: 'rgba(101, 101, 101, 0.8)',
+            }
         }
-        return '/bg5.jpg'
+        return {
+            background: '/bg5.jpg',
+            cards: 'rgba(255,255,255,.06)'
+        }
     }
 
-    const background = getBackground(selectedCity?.weatherCode)
+    const theme = getWeatherTheme(selectedCity?.weatherCode)
     return (
         <div className='app'
             style={{
-                backgroundImage: `url(${background})`,
-                // color: 'black'
+                backgroundImage: `url(${theme.background})`,
+                '--background-cards': theme.cards
             }}>
             <Sidebar 
                 cities={cities}
