@@ -2,7 +2,7 @@ import './Card.css'
 import { getWeatherIcon } from '../Icons/Icons'
 
 
-function formatTime(date){
+export function formatTime(date){
 
     return new Date(date)
       .toLocaleTimeString(

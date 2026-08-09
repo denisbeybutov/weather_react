@@ -34,7 +34,16 @@ export default function Sidebar({
               longitude: null,
               loading: true,
               sunrise: null,
-              sunset: null
+              sunset: null,
+              humidity: null,
+              apparentTemperature: null,
+              windSpeed: null,
+              windDirection: null,
+              cloudCover: null,
+              visibility: null,
+              precipitationProbability: null,
+              daylightDuration: null,
+              uvIndex: null
             }
           ])
      
@@ -43,7 +52,7 @@ export default function Sidebar({
              place = await getCityCoordinates(city)
              weatherData = await getWeather(place.latitude, place.longitude)
 
-            console.log(place)
+            console.log(weatherData)
             // console.log(weatherData)
           }catch(err){
             setError(err.message);
@@ -67,7 +76,16 @@ export default function Sidebar({
                   longitude: place.longitude,
                   loading: false,
                   sunrise: weatherData.daily.sunrise[0],
-                  sunset: weatherData.daily.sunset[0]
+                  sunset: weatherData.daily.sunset[0],
+                  humidity: weatherData.current.relative_humidity_2m,
+                  apparentTemperature: weatherData.current.apparent_temperature,
+                  windSpeed: weatherData.current.wind_speed_10m,
+                  windDirection: weatherData.current.wind_direction_10m,
+                  cloudCover: weatherData.current.cloud_cover,
+                  visibility: weatherData.current.visibility,
+                  precipitationProbability: weatherData.daily.precipitation_probability_max[0],
+                  daylightDuration: weatherData.daily.daylight_duration[0],
+                  uvIndex: weatherData.daily.uv_index_max[0]
                 }
                 : city
             })
@@ -98,24 +116,34 @@ export default function Sidebar({
 
     const updatedCities = await Promise.all(
       citiesRef.current.map(async city => {
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&current=temperature_2m,weather_code`
 
-        const response = await fetch(weatherUrl)
-        if(!response.ok) {
-          console.log('ошибка')
-          return {
-            ...city,
-            loading: false
-          }
-        }
+        try {
+            const data = await getWeather(city.latitude,city.longitude)
 
-        const data = await response.json()
+            return {
+                ...city,
+                    temperature: data.current.temperature_2m,
+                    weatherCode: data.current.weather_code,
+                    humidity: data.current.relative_humidity_2m,
+                    sunrise: data.daily.sunrise[0],
+                    sunset: data.daily.sunset[0],
+                    apparentTemperature: data.current.apparent_temperature,
+                    windSpeed: data.current.wind_speed_10m,
+                    windDirection: data.current.wind_direction_10m,
+                    cloudCover: data.current.cloud_cover,
+                    visibility: data.current.visibility,
+                    precipitationProbability: data.daily.precipitation_probability_max[0], 
+                    daylightDuration: data.daily.daylight_duration[0],
+                    uvIndex: data.daily.uv_index_max[0],
+                    loading: false
+            }
+        } catch (err) {
+            console.error(error)
 
-        return {
-          ...city,
-          temperature: data.current.temperature_2m,
-          weatherCode: data.current.weather_code,
-          loading: false
+            return {
+                ...city,
+                loading: false
+            }
         }
       })
     )

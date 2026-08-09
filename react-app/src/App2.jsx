@@ -13,12 +13,18 @@ export default function App2(){
     const [selectedCity, setSelectedCity] = useState(null)
 
     const getWeatherTheme = (code) => {
-        if (code === 0) {
+        if (code === 0 || code === 1) {
             return {
                 background: '/bg_clear.jpeg',
                 cards: 'rgba(101, 101, 101, 0.8)',
             }
         }
+        if(code === 51 || code === 53 || code === 55
+                 || code === 61 || code === 63 || code === 65
+                 || code === 80 || code === 81 || code === 82) return  {
+                    background: '/rain20.jpeg',
+                    cards: 'rgba(101, 101, 101, 0.8)',
+                 }
         return {
             background: '/bg5.jpg',
             cards: 'rgba(255,255,255,.06)'
@@ -41,7 +47,7 @@ export default function App2(){
             />
             <main className='content'>
                 <WeatherCard city={selectedCity}/>
-                {/* <Forecast/> */}
+                <Forecast city={selectedCity}/>
                 {/* <WeatherMap/> */}
             </main>
         </div>
