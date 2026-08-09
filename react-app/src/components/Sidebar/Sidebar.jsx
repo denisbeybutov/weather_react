@@ -43,7 +43,11 @@ export default function Sidebar({
               visibility: null,
               precipitationProbability: null,
               daylightDuration: null,
-              uvIndex: null
+              uvIndex: null,
+              hourlyTemperature: null,
+              hourlyTime: null,
+              hourlyWeatherCode: null,
+              hourlyPrecipitationProbability: null
             }
           ])
      
@@ -85,7 +89,11 @@ export default function Sidebar({
                   visibility: weatherData.current.visibility,
                   precipitationProbability: weatherData.daily.precipitation_probability_max[0],
                   daylightDuration: weatherData.daily.daylight_duration[0],
-                  uvIndex: weatherData.daily.uv_index_max[0]
+                  uvIndex: weatherData.daily.uv_index_max[0],    
+                  hourlyTemperature: weatherData.hourly.temperature_2m,
+                  hourlyTime: weatherData.hourly.time,
+                  hourlyWeatherCode: weatherData.hourly.weather_code,
+                  hourlyPrecipitationProbability: weatherData.hourly.precipitation_probability
                 }
                 : city
             })
@@ -119,6 +127,7 @@ export default function Sidebar({
 
         try {
             const data = await getWeather(city.latitude,city.longitude)
+            console.log(data)
 
             return {
                 ...city,
@@ -135,6 +144,10 @@ export default function Sidebar({
                     precipitationProbability: data.daily.precipitation_probability_max[0], 
                     daylightDuration: data.daily.daylight_duration[0],
                     uvIndex: data.daily.uv_index_max[0],
+                    hourlyTemperature: data.hourly.temperature_2m,
+                    hourlyTime: data.hourly.time,
+                    hourlyWeatherCode: data.hourly.weather_code,
+                    hourlyPrecipitationProbability: data.hourly.precipitation_probability,
                     loading: false
             }
         } catch (err) {

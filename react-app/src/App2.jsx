@@ -46,7 +46,7 @@ export default function App2(){
                 setSelectedCity={setSelectedCity}
             />
             <main className='content'>
-                <WeatherCard city={selectedCity}/>
+                <WeatherCard city={selectedCity} key={selectedCity?.id}/>
                 <Forecast city={selectedCity}/>
                 {/* <WeatherMap/> */}
             </main>

@@ -13,7 +13,7 @@ export async function getCityCoordinates(city) {
 }
 
 export async function getWeather(latitude, longitude){
-    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,cloud_cover,visibility&daily=sunrise,sunset,precipitation_probability_max,daylight_duration,uv_index_max&timezone=auto`
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,cloud_cover,visibility&daily=sunrise,sunset,precipitation_probability_max,daylight_duration,uv_index_max&hourly=temperature_2m,weather_code,precipitation_probability&timezone=auto`
 
       const weatherResponse = await fetch(weatherUrl)
       return await weatherResponse.json()

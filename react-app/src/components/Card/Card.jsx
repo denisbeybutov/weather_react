@@ -16,8 +16,8 @@ export function formatTime(date){
   }
 
  export function weather(code){
-    if(code === 0) return 'Ясно'
-    if(code === 1) return 'Преимущественно ясно'
+    if(code === 0 || code === 1) return 'Ясно'
+    
     if(code === 2) return 'Перменная облачность'
     if(code === 3) return 'Пасмурно'
     if(code === 45 || code === 48) return 'Туман'
