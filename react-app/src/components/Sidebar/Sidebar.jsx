@@ -47,7 +47,12 @@ export default function Sidebar({
               hourlyTemperature: null,
               hourlyTime: null,
               hourlyWeatherCode: null,
-              hourlyPrecipitationProbability: null
+              hourlyPrecipitationProbability: null,
+              dailyTime: null,
+              dailyTemperatureMax: null,
+              dailyTemperatureMin: null,
+              dailyWeatherCode: null
+
             }
           ])
      
@@ -93,7 +98,11 @@ export default function Sidebar({
                   hourlyTemperature: weatherData.hourly.temperature_2m,
                   hourlyTime: weatherData.hourly.time,
                   hourlyWeatherCode: weatherData.hourly.weather_code,
-                  hourlyPrecipitationProbability: weatherData.hourly.precipitation_probability
+                  hourlyPrecipitationProbability: weatherData.hourly.precipitation_probability,
+                  dailyTime: weatherData.daily.time,
+                  dailyTemperatureMax:  weatherData.daily.temperature_2m_max,
+                  dailyTemperatureMin:  weatherData.daily.temperature_2m_min,
+                  dailyWeatherCode:  weatherData.daily.weather_code
                 }
                 : city
             })
@@ -148,6 +157,10 @@ export default function Sidebar({
                     hourlyTime: data.hourly.time,
                     hourlyWeatherCode: data.hourly.weather_code,
                     hourlyPrecipitationProbability: data.hourly.precipitation_probability,
+                    dailyTime: data.daily.time,
+                    dailyTemperatureMax:  data.daily.temperature_2m_max,
+                    dailyTemperatureMin:  data.daily.temperature_2m_min,
+                    dailyWeatherCode:  data.daily.weather_code,
                     loading: false
             }
         } catch (err) {
