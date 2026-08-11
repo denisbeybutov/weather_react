@@ -1,0 +1,18 @@
+.sidebar{
+    width: 300px;
+    background:var(--background-cards);
+    color:rgb(214, 214, 214);
+    /* color: inherit; */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.sidebar__text{
+    opacity: .5;
+    font-size: 15px;
+}

@@ -1,0 +1,20 @@
+export async function getCityCoordinates(city) {
+    const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=ru&format=json`
+    
+      const geoPresponse = await fetch(geoUrl)
+      const geoData = await geoPresponse.json()
+
+      
+      if (!geoData.results || geoData.results.length === 0) {
+        throw new Error("Город не найден");
+    }
+
+    return geoData.results[0]
+}
+
+export async function getWeather(latitude, longitude){
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,cloud_cover,visibility&daily=sunrise,sunset,precipitation_probability_max,daylight_duration,uv_index_max,temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,weather_code,precipitation_probability&timezone=auto&forecast_days=10`
+
+      const weatherResponse = await fetch(weatherUrl)
+      return await weatherResponse.json()
+}
