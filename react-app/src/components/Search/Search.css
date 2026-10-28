@@ -1,0 +1,42 @@
+.search{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.search__buttons{
+    display: flex;
+    gap: 10px;
+    
+}
+
+.search__buttons button {
+    flex: 1;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    color:rgb(228, 226, 226);
+    border-radius:5px;
+    backdrop-filter:blur(3px);
+    padding: 5px 0;
+    
+}
+
+.search__buttons button:focus{
+    outline: 2px solid grey;
+}
+
+.search__input{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    color:rgb(228, 226, 226);
+    border-radius:5px;
+    backdrop-filter:blur(3px);
+    outline: none;    
+    padding: 10px;
+    
+}
+
+.search__input::placeholder{
+    color:rgb(228, 226, 226);
+}

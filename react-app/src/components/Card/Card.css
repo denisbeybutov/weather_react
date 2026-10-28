@@ -1,0 +1,57 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border:1px solid rgba(255,255,255,.15);
+    /* background:rgba(255,255,255,.06); */
+    background:rgba(255,255,255,.06);
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+    cursor: pointer;
+    transition: scale .3s;
+}
+
+.card:hover{
+    scale: 1.02;
+    background:rgba(255,255,255,.3);
+}
+
+.card__icon{
+    width: 30px;
+    height: 30px;
+    opacity: .6;
+}
+.card__weather{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card__first-row{
+    display: flex;
+    justify-content: space-between;
+}
+.card__delete{
+    background-color: transparent;
+    color:rgb(228, 226, 226);
+    border:none;
+
+}
+
+.card__second-row{
+    display: flex;
+    justify-content: space-between;
+}
+.card__icon-delete {
+    width: 20px;
+    height: 20px;
+    opacity: .6;
+    cursor: pointer;
+    transition: opacity .4s;
+}
+
+.card__icon-delete:hover{
+    opacity: 1;
+}

@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.app{
+    display: flex;
+    height: 100vh;
+    background-image: url('/bg5.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    
+}
+
+.content{
+    flex: 1;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.weather-card,
+.forecast,
+.map{
+    background: var(--background-cards);
+
+    backdrop-filter:blur(3px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    color:rgb(228, 226, 226);
+}
